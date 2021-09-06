@@ -9,6 +9,10 @@ import java.util.Scanner;
 
 public class App
 {
+    public static boolean isNumeric(String str) {
+        return str.matches("-?\\d+(\\.\\d+)?");  //match a number with optional '-' and decimal.
+    }
+
     public static void main( String[] args )
     {
         final double rM = 0.73;
@@ -20,51 +24,51 @@ public class App
         int gender;
         double A;
         double W;
-        int H;
+        double H;
 
         while (true) {
-            try {
-                System.out.print("Enter 1 if you are male or a 2 if you are female: ");
-                gender = Integer.parseInt(input.nextLine());
+            System.out.print("Enter 1 if you are male or a 2 if you are female: ");
+            String in = input.nextLine();
+            if (isNumeric(in)) {
+                gender = Integer.parseInt(in);
                 r = gender == 1 ? rM : rW;
-            } catch (NumberFormatException e) {
+                break;
+            } else {
                 System.out.println("Please only enter numeric value!");
-                continue;
             }
-            break;
         }
 
         while (true) {
-            try {
-                System.out.print("How many ounces of alcohol did you have? ");
-                A = Double.parseDouble(input.nextLine());
-            } catch (NumberFormatException e) {
+            System.out.print("How many ounces of alcohol did you have? ");
+            String in = input.nextLine();
+            if (isNumeric(in)) {
+                A = Double.parseDouble(in);
+                break;
+            } else {
                 System.out.println("Please only enter numeric value!");
-                continue;
             }
-            break;
         }
 
         while (true) {
-            try {
-                System.out.print("What is your weight, in pounds? ");
-                W = Double.parseDouble(input.nextLine());
-            } catch (NumberFormatException e) {
+            System.out.print("What is your weight, in pounds? ");
+            String in = input.nextLine();
+            if (isNumeric(in)) {
+                W = Double.parseDouble(in);
+                break;
+            } else {
                 System.out.println("Please only enter numeric value!");
-                continue;
             }
-            break;
         }
 
         while (true) {
-            try {
-                System.out.print("How many hours has it been since your last drink? ");
-                H = Integer.parseInt(input.nextLine());
-            } catch (NumberFormatException e) {
+            System.out.print("How many hours has it been since your last drink? ");
+            String in = input.nextLine();
+            if (isNumeric(in)) {
+                H = Double.parseDouble(in);
+                break;
+            } else {
                 System.out.println("Please only enter numeric value!");
-                continue;
             }
-            break;
         }
 
         double BAC = (A * 5.14 / W * r) - 0.015 * H;
