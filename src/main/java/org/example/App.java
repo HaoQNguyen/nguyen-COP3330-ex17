@@ -17,19 +17,55 @@ public class App
 
         Scanner input = new Scanner(System.in);
         double r;
+        int gender;
+        double A;
+        double W;
+        int H;
 
-        System.out.print("Enter 1 if you are male or a 2 if you are female: ");
-        int gender = input.nextInt();
-        r = gender == 1 ? rM : rW;
+        while (true) {
+            try {
+                System.out.print("Enter 1 if you are male or a 2 if you are female: ");
+                gender = Integer.parseInt(input.nextLine());
+                r = gender == 1 ? rM : rW;
+            } catch (NumberFormatException e) {
+                System.out.println("Please only enter numeric value!");
+                continue;
+            }
+            break;
+        }
 
-        System.out.print("How many ounces of alcohol did you have? ");
-        double A = input.nextDouble();
+        while (true) {
+            try {
+                System.out.print("How many ounces of alcohol did you have? ");
+                A = Double.parseDouble(input.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Please only enter numeric value!");
+                continue;
+            }
+            break;
+        }
 
-        System.out.print("What is your weight, in pounds? ");
-        double W = input.nextDouble();
+        while (true) {
+            try {
+                System.out.print("What is your weight, in pounds? ");
+                W = Double.parseDouble(input.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Please only enter numeric value!");
+                continue;
+            }
+            break;
+        }
 
-        System.out.print("How many hours has it been since your last drink? ");
-        int H = input.nextInt();
+        while (true) {
+            try {
+                System.out.print("How many hours has it been since your last drink? ");
+                H = Integer.parseInt(input.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Please only enter numeric value!");
+                continue;
+            }
+            break;
+        }
 
         double BAC = (A * 5.14 / W * r) - 0.015 * H;
         System.out.printf("\nYour BAC is %f\n", BAC);
